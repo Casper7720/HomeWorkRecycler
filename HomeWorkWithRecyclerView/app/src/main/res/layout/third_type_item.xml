@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="MissingConstraints">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            android:contentDescription="gfff"
+            android:scaleType="centerCrop"
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/media" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TITLE"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            <TextView
+                android:id="@+id/textViewSecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="SECONDARY_TEXT"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/cardview_dark_background" />
+
+            <TextView
+                android:id="@+id/textViewSupportTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="SUPPORTING_TEXT"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/cardview_dark_background" />
+
+            <Button
+                android:id="@+id/buttonDel"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:text="@string/delete"
+                android:layout_marginTop="10dp"/>
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
