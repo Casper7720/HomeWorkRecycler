@@ -1,7 +1,9 @@
 package com.example.homeworkwithrecyclerview
 
 
+import android.inputmethodservice.Keyboard
 import android.os.Bundle
+import android.os.Parcel
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +18,14 @@ import com.example.homeworkwithrecyclerview.info.RowType
 import com.example.homeworkwithrecyclerview.info.Second1
 import com.example.homeworkwithrecyclerview.info.Third1
 import com.google.android.material.tabs.TabLayout
-
+import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parceler
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var tabLayout: TabLayout
+    private var firstList1: MutableList<RowType> = mutableListOf()
+    private var firstList2: MutableList<RowType> = mutableListOf()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,19 +33,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        if (savedInstanceState == null){
+            for (i in 0..100) {
+                firstList1.add(Second1(i.toString()))
 
-        val firstList2: MutableList<RowType> = mutableListOf()
-
-        for (i in 0..10){
-            firstList2.add(First1(i.toString(), i.toString()))
-            firstList2.add(Third1(i.toString(), i.toString(), i.toString()))
+            }
+            for (i in 0..10){
+                firstList2.add(First1(i.toString(), i.toString()))
+                firstList2.add(Third1(i.toString(), i.toString(), i.toString()))
+            }
+        }
+        else{
+            var arrayList1: ArrayList<RowType> = savedInstanceState.getParcelableArrayList("LIST")!!
+            for (i in 0..arrayList1.size-1){
+                firstList1.add(arrayList1[i])
+            }
+            var arrayList2: ArrayList<RowType> = savedInstanceState.getParcelableArrayList("LIST2")!!
+            for (i in 0..arrayList2.size-1){
+                firstList2.add(arrayList2[i])
+            }
         }
 
-        val firstList1: MutableList<RowType> = mutableListOf()
 
-        for (i in 0..100) {
-            firstList1.add(Second1(i.toString()))
-        }
 
 
 
@@ -85,14 +99,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     class MyAdapter(
         private var firstValues: MutableList<RowType>,
-    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RowType {
+    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
 
-        override val FIRST = 0
-        override val SECOND = 1
-        override val THIRD = 2
+        val FIRST = 0
+        val SECOND = 1
+        val THIRD = 2
 
 
         private fun removeItem(position: Int) {
@@ -197,6 +212,8 @@ class MainActivity : AppCompatActivity() {
                 buttonDel = itemView.findViewById(R.id.buttonDel)
             }
 
+
+
         }
 
 
@@ -226,6 +243,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -233,6 +251,18 @@ class MainActivity : AppCompatActivity() {
         if (tabLayout.selectedTabPosition == 0){
             outState.putString("This", "FIRST")
         }
+
+        var araay1: ArrayList<RowType> = ArrayList()
+        var araay2: ArrayList<RowType> = ArrayList()
+
+        for (i in 0..firstList1.size-1){
+            araay1.add(firstList1[i])
+        }
+        for (i in 0..firstList2.size-1){
+            araay2.add(firstList2[i])
+        }
+        outState.putParcelableArrayList("LIST",araay1)
+        outState.putParcelableArrayList("LIST2",araay2)
 
         super.onSaveInstanceState(outState)
     }

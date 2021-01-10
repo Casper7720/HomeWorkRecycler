@@ -1,7 +1,10 @@
 package com.example.homeworkwithrecyclerview.info
 
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 class First1(val title : String,
-                  val info : String
+             private val info : String
 ) : RowType {
 
 

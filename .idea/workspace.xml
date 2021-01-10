@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6b6a025e-f549-420a-99e4-3be9950f5283" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/Holders/FirstHolder.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/Holders/SecondHolder.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/Holders/ThirdHolder.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/First.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/First1.kt" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/First1.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/RowType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/RowType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/Second.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/Second1.kt" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/Second1.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/Third.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/Third1.kt" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWorkWithRecyclerView/app/src/main/java/com/example/homeworkwithrecyclerview/info/Third1.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1msZfXnaOzQvBooDZ7TCmV20Cyk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/HomeWorkWithRecyclerView" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b6a025e-f549-420a-99e4-3be9950f5283" name="Default Changelist" comment="" />
+      <created>1610284363178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610284363178</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="650" y="245" key="FileChooserDialogImpl" timestamp="1610284392180">
+      <screen x="0" y="0" width="1739" height="978" />
+    </state>
+    <state x="650" y="245" key="FileChooserDialogImpl/0.0.1739.978@0.0.1739.978" timestamp="1610284392180" />
+  </component>
+</project>
