@@ -2,6 +2,8 @@ package com.example.homeworkwithrecyclerview
 
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +18,16 @@ import com.example.homeworkwithrecyclerview.info.RowType
 import com.example.homeworkwithrecyclerview.info.Second1
 import com.example.homeworkwithrecyclerview.info.Third1
 import com.google.android.material.tabs.TabLayout
+import kotlinx.parcelize.Parceler
+import kotlinx.parcelize.Parcelize
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var tabLayout: TabLayout
+    private lateinit var firstList1: MutableList<RowType>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,11 +43,22 @@ class MainActivity : AppCompatActivity() {
             firstList2.add(Third1(i.toString(), i.toString(), i.toString()))
         }
 
-        val firstList1: MutableList<RowType> = mutableListOf()
+        firstList1 =  mutableListOf()
 
-        for (i in 0..100) {
-            firstList1.add(Second1(i.toString()))
+        if (savedInstanceState == null){
+            for (i in 0..100) {
+                firstList1.add(Second1(i.toString()))
+            }
         }
+        else{
+            var array: ArrayList<out Parcelable>? = savedInstanceState.getParcelableArrayList("LIST")
+            for (i in 0..array!!.size-1){
+
+                firstList1.add(array[i] as RowType)
+            }
+
+        }
+
 
 
 
@@ -84,10 +102,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    @Parcelize
     class MyAdapter(
-        private var firstValues: MutableList<RowType>,
-    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RowType {
+        private var firstValues: MutableList<RowType>?,
+    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RowType, Parcelable  {
 
 
         override val FIRST = 0
@@ -95,8 +113,9 @@ class MainActivity : AppCompatActivity() {
         override val THIRD = 2
 
 
+
         private fun removeItem(position: Int) {
-            firstValues.removeAt(position)
+            firstValues?.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, itemCount)
         }
@@ -104,13 +123,13 @@ class MainActivity : AppCompatActivity() {
 
         override fun getItemViewType(position: Int): Int {
             return when {
-                firstValues[position] is First1 -> {
+                firstValues?.get(position) is First1 -> {
                     FIRST
                 }
-                firstValues[position] is Second1 -> {
+                firstValues?.get(position) is Second1 -> {
                     SECOND
                 }
-                firstValues[position] is Third1 -> {
+                firstValues?.get(position) is Third1 -> {
                     THIRD
                 }
                 else -> {
@@ -147,9 +166,9 @@ class MainActivity : AppCompatActivity() {
                 is FirstHolder -> {
 
                     (holder).textViewTitle?.text =
-                        ((firstValues[position] as First1).getTitle() as CharSequence?)
+                        ((firstValues?.get(position) as First1).getTitle() as CharSequence?)
                     (holder).textViewInfo?.text =
-                        ((firstValues[position] as First1).getInfo() as CharSequence?)
+                        ((firstValues!![position] as First1).getInfo() as CharSequence?)
                     (holder).buttonDel?.setOnClickListener {
                         removeItem(holder.adapterPosition)
                     }
@@ -157,7 +176,7 @@ class MainActivity : AppCompatActivity() {
                 is SecondHolder -> {
 
                     (holder).textView?.text =
-                        ((firstValues[position] as Second1).getText() as CharSequence?)
+                        ((firstValues?.get(position) as Second1).getText() as CharSequence?)
                     (holder).buttonDel?.setOnClickListener {
                         removeItem(holder.adapterPosition)
                     }
@@ -166,11 +185,11 @@ class MainActivity : AppCompatActivity() {
                 is ThirdHolder -> {
 
                     (holder).title?.text =
-                        ((firstValues[position] as Third1).getTitle() as CharSequence?)
+                        ((firstValues?.get(position) as Third1).getTitle() as CharSequence?)
                     (holder).secondText?.text =
-                        ((firstValues[position] as Third1).getSecondText() as CharSequence?)
+                        ((firstValues!![position] as Third1).getSecondText() as CharSequence?)
                     (holder).support?.text =
-                        ((firstValues[position] as Third1).getSupport() as CharSequence?)
+                        ((firstValues!![position] as Third1).getSupport() as CharSequence?)
                     (holder).buttonDel?.setOnClickListener {
                         removeItem(holder.adapterPosition)
                     }
@@ -182,7 +201,7 @@ class MainActivity : AppCompatActivity() {
 
 
         override fun getItemCount(): Int {
-            return firstValues.size
+            return firstValues!!.size
         }
 
 
@@ -210,7 +229,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        class ThirdHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        class ThirdHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             var title: TextView? = null
             var secondText: TextView? = null
             var support: TextView? = null
@@ -225,6 +244,33 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+//        companion object : Parceler<MyAdapter> {
+//            override fun MyAdapter.write(parcel: Parcel, flags: Int) = TODO()
+//            override fun create(parcel: Parcel): MyAdapter = TODO()
+//        }
+//
+//
+//        inline fun <T> Parcel.readNullable(reader: () -> T) =
+//            if (readInt() != 0) reader() else null
+//
+//        inline fun <T> Parcel.writeNullable(value: T?, writer: T.() -> Unit) {
+//            if (value != null) {
+//                writeInt(1)
+//                value.writer()
+//            } else {
+//                writeInt(0)
+//            }
+//        }
+//
+//        object DateParceler : Parceler<RowType> {
+//
+//            override fun create(parcel: Parcel) = parcel.readNullable { Date(parcel.readLong()) }
+//
+//            override fun RowType?.write(parcel: Parcel, flags: Int) = parcel.writeNullable(this) { parcel.writeLong(time) }
+//            override fun RowType.write(parcel: Parcel, flags: Int) {
+//                TODO("Not yet implemented")
+//            }
+//        }
 
     }
 
@@ -233,6 +279,11 @@ class MainActivity : AppCompatActivity() {
         if (tabLayout.selectedTabPosition == 0){
             outState.putString("This", "FIRST")
         }
+        var arrayList: ArrayList<RowType> = ArrayList()
+        for (i in 0..firstList1.size){
+            arrayList.add(firstList1[i])
+        }
+        outState.putParcelableArrayList("LIST", arrayList)
 
         super.onSaveInstanceState(outState)
     }

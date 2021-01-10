@@ -1,8 +1,9 @@
 package com.example.homeworkwithrecyclerview.info
 
+import android.os.Parcelable
 
 
-interface RowType {
+interface RowType:Parcelable {
 
 
     val FIRST: Int
